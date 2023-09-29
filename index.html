@@ -7,47 +7,304 @@
     <title>Franco Sbaffi - Home</title>
     <link rel="icon" href="assets/img/Icon.svg" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const nav = document.querySelector(".nav");
+        const navItems = document.querySelector(".nav-items");
+        const navHome = document.querySelector(".nav-home");
+        const navTop = document.querySelector(".nav-top");
+        const icon = document.querySelector(".hamburguer i");
+      
+        let isOpen = false;
+      
+        gsap.set(nav, { height: "60px" });
+        gsap.set(navTop, { opacity: 0, scale: 0.9, display: "none" });
+        gsap.set(navItems, { opacity: 1, display: "flex" });
+        gsap.set(navHome, { flexGrow: 0 });
+      
+        navHome.addEventListener("click", function() {
+          if (!isOpen) {
+            gsap.to(nav, {
+              height: "370px",
+              duration: 0.75,
+              ease: "power4.inOut",
+              immediateRender: false,
+            });
+      
+            gsap.to(navTop, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.3,
+              onStart: function() {
+                gsap.set(navTop, { display: "block" });
+              },
+              delay: 0.5,
+              immediateRender: false,
+            });
+      
+            gsap.to(navItems, {
+              opacity: 0,
+              duration: 0.1,
+              onComplete: function() {
+                gsap.set(navItems, { display: "none" });
+              },
+              immediateRender: false,
+            });
+      
+            gsap.to(navHome, {
+              flexGrow: 1,
+              duration: 0.2,
+              ease: "power4.inOut",
+              delay: 0,
+              immediateRender: false,
+              onComplete: function() {
+                icon.className = "ph-light ph-x";
+              },
+            });
+          } else {
+            gsap.to(nav, {
+              height: "60px",
+              duration: 0.75,
+              ease: "power4.inOut",
+              delay: 0.2,
+              immediateRender: false,
+            });
+      
+            gsap.to(navTop, {
+              opacity: 0,
+              scale: 0.9,
+              duration: 0.2,
+              onComplete: function() {
+                gsap.set(navTop, { display: "none" });
+              },
+              immediateRender: false,
+            });
+      
+            gsap.to(navHome, {
+              flexGrow: 0,
+              duration: 0.2,
+              ease: "power4.inOut",
+              immediateRender: false,
+              onComplete: function() {
+                icon.className = "ph-light ph-list";
+              },
+            });
+      
+            gsap.to(navItems, {
+              opacity: 1,
+              duration: 0.2,
+              onStart: function() {
+                gsap.set(navItems, { display: "flex" });
+              },
+              delay: 0.5,
+              immediateRender: false,
+            });
+          }
+          isOpen = !isOpen;
+        });
+      });
+    </script>   
   </head>
   <body>
     <!-- Bg Animation Effect Start -->
     <div class="bg-animation-effect"></div>
     <!-- Bg Animation Effect End -->
 
-    
+
 
     <!-- START NAVBAR -->
 
     <nav class="navbar"></nav>
+    <div class="nav">
+      <div class="nav-top">
+        <div class="more-links" id="lg">
+          <!-- <div class="col">
+            <div class="col-title">
+              <p data-section="ChangeLanguage" data-value="ChangeL">Change Languages</p> 
+            </div> 
+            <div class="link">
+              <a href="#" data-language="en" data-section="ChangeLanguage" data-value="ChangeE">English</a>
+            </div>
+            <div class="link">
+              <a href="#" data-language="cn" data-section="ChangeLanguage" data-value="ChangeC">Chinese</a>
+            </div>
+            <div class="link">
+              <a href="#" data-language="es" data-section="ChangeLanguage" data-value="ChangeS">Spanish</a>
+            </div>
+          </div>  -->
 
-    <!-- END NAVBAR -->
+          <div class="col">
+            <div class="col-title">
+              <p data-section="projects1" data-value="projectsM">Projects</p> 
+            </div> 
+            <div class="link">
+              <a href="#" data-section="projects1" data-value="firstP">EC2 Instance</a>
+            </div>
+            <div class="link">
+              <a href="#" data-section="projects1" data-value="secondP">CI/CD on Tencent Cloud</a>
+            </div>
+            <div class="link">
+              <a href="#" data-section="projects1" data-value="thirdP">Advanced Services</a>
+            </div>
+          </div> 
+
+          <div class="col">
+            <div class="col-title">
+              <p data-section="project1" data-value="contact">Contact</p> 
+            </div> 
+            <div class="link">
+              <a href="https://www.linkedin.com/in/franco-sbaffi/" target="_blank">Linkedin</a>
+            </div>
+            <div class="link">
+              <a href="mailto:sbaffids@gmail.com">Mail</a>
+            </div>
+            <div class="link">
+              <a href="https://twitter.com/franrzsa" target="_blank">Twitter</a>
+            </div>
+          </div> 
+
+         
+        </div> 
+      </div> 
+      <div class="nav-bottom">
+        <div class="nav-home">
+          <div class="nav-item" id="toggle">
+            <div class="hamburguer">
+              <i class="ph-light ph-list"></i>
+            </div> 
+            <p>More</p>
+          </div> 
+        </div>
+        <div class="nav-items">
+          <div class="nav-item">
+            <a href="index.html">Home</a>
+          </div>
+          <div class="nav-item">
+            <a href="assets/pages/blog/blog.html">Writings</a>
+          </div>
+          <div class="nav-item">
+            <div class="containerM">
+              <canvas id="myCanvas"></canvas>
+            </div>
+            <audio src="assets/img/song.mp3" id="audio"></audio>
+          </div>
+        </div>
+      </div>
+    </div>
+        <script>
+          const c = document.getElementById("myCanvas");
+          const audio = document.querySelector("#audio");
+
+          const colorBlanco = getComputedStyle(document.documentElement).getPropertyValue('--stroke');
+
+          audio.volume = 0.03;
+
+          let opt = {
+            width: c.offsetWidth,
+            height: c.offsetHeight,
+            midY: c.offsetHeight / 2,
+            points: 80,
+            stretch: 10,
+            sinHeight: 0,
+            speed: -0.1,
+            strokeColor: colorBlanco,
+            strokeWidth: 1.5,
+            power: false,
+          };
+          
+          c.width = opt.width * 2;
+          c.height = opt.height * 2;
+          c.style.width = opt.width + "px";
+          c.style.height = opt.height + "px";
+      
+          const ctx = c.getContext("2d");
+          ctx.scale(2, 2);
+      
+          ctx.strokeStyle = opt.strokeColor;
+          ctx.lineWidth = opt.strokeWidth;
+          ctx.lineCap = "round";
+          ctx.lineJoin = "round";
+      
+          let time = 0;
+      
+          const render = () => {
+            window.requestAnimationFrame(render);
+            ctx.clearRect(0, 0, opt.width, opt.height);
+            time += 1;
+            ctx.beginPath();
+            let increment = 0;
+
+
+            for (let i = 0; i <= opt.points; i++) {
+              if (i < opt.points / 2) {
+                increment += 0.1;
+              } else {
+                increment += -0.1;
+              }
+      
+              const x = (opt.width / opt.points) * i;
+              const y =
+                opt.midY +
+                Math.sin(time * opt.speed + (i / opt.stretch)) * opt.sinHeight * increment;
+              ctx.lineTo(x, y);
+            }
+      
+            ctx.stroke();
+          };
+      
+          render();
+      
+          c.addEventListener("click", () => {
+            opt.power = !opt.power;
+      
+            if (opt.power) {
+              audio.play();
+              TweenMax.to(opt, 1, {
+                sinHeight: 4,
+                stretch: 5,
+                ease: Power2.easeInOut,
+              });
+            } else {
+              audio.pause();
+              TweenMax.to(opt, 1, {
+                sinHeight: 0,
+                stretch: 10,
+                ease: Power3.easeOut,
+              });
+            }
+          });
+        </script>
 
     <main class="container fade-in">
       <article class="sec-padding">
         <div class="arrow-back">
           <img src="assets/img/arrow-back.svg" alt="" class="arrow-img" />
-          <a href="#" class="btn link">Toggle Theme</a>
+          <a href="#" class="btn link" data-section="theme" data-value="toggle-theme">Toggle Theme</a>
         </div>
         <div class="img-content">
           <img class="img-me" src="assets/img/ProfileWB.png" alt="photo of me">
         </div>
-        <p class="presentation">
+        <p class="presentation" data-section="profile" data-value="role">
           Hello, I'm an Cloud Engineer based in Argentina!
         </p>
         <h1 class="title hover-me">Franco Sbaffi</h1>
-        <p class="sub-title">
-          <span>Cloud Engineer.</span> With great desire to be able to offer my knowledge in this world that I am passionate about.
+        <p class="sub-title" data-section="second-section" data-value="desc1">
+          <span><b>Cloud Engineer.</b></span> With great desire to be able to offer my knowledge in this world that I am passionate about.
         </p>
-        <p class="sub-title">
+        <p class="sub-title" data-section="second-section" data-value="desc2">
           Constant training in Cloud Computing keeping me updated. <b class="sub-title">Linux</b>, <b class="sub-title">Python</b>, <b class="sub-title">AWS</b>, <b class="sub-title">Azure</b>, <b class="sub-title">Tencent Cloud</b> & <b class="sub-title">More</b>!
         </p>
         
         <!-- Start Article -->
         <div class="sec-grid sec-padding">
-          <h3>About me</h3>
+          <h3 data-section="about-me" data-value="aboutMe">About me</h3>
           <h3>Projects</h3>
-          <p class="dot">Languages</p>
+          <p class="dot" data-section="about-me" data-value="principal-languages">Languages</p>
           <p class="dot"><a class="project-link btn link" href="#"> Launching an EC2 Instance</a></p>
-          <p class="desc">Spanish <i>(Native)</i> <br> English <i>(B2)</i> <br> Chinese <i>(HSK-2)</i></p>
+          <p class="desc" data-section="about-me" data-value="languages">Spanish <br> English <br> Chinese</p>
           <p class="desc">Deployed an EC2 instance on AWS with a simple web application, learning how to manage instances and ensure security with SSH. </p>
           <p class="dot">Qualifications</p>
           <p class="dot"><a class="project-link link" href="#">CI/CD on Tencent Cloud</a></p>
@@ -59,9 +316,7 @@
           <p class="desc">Exploring AKS Azure for Containers and Functions for Serverless Computing. I expanded my knowledge in advanced cloud solutions.</p>
           <p></p>
       </div>
-      <!-- End Article -->
 
-      <!-- Start Writings -->
       <article class="post-content low-sec_padding">
         <div class="post-content">
           <span class="m-out">(Most Outstanding)</span>
@@ -95,52 +350,6 @@
       </div>
     </article>
 
-      <!-- END WRITINGS -->
-      <!-- START EXP -->
-      <!-- <div class="low-sec_padding">
-        <h2>Experience</h2>
-        <p class="title"><span>Software Developer</span></p>
-        <p class="sub-title">Upwork - Full Time  (2020 - 2023)</p>
-        <p class="sub-title">
-          <span class="yellow-point">•</span> Backend development using Ruby on Rails and Node
-          <br>
-          <span class="yellow-point">•</span> Integrated both RESTful endpoints and GraphQL endpoints in React.js application by using Apollo library
-          <br>
-          <span class="yellow-point">•</span> Hybrid app development using React Native and Ionic
-          <br>
-          <span class="yellow-point">•</span> Developed RESTful endpoints with node/express, Django and Flask
-          <br>
-          <span class="yellow-point">•</span> Native Mobile(iPhone/Android) app development
-          <br>
-          <span class="yellow-point">•</span> Experienced in drawing graph and object using D3.js and Canvas.js
-          <br>
-          <span class="yellow-point">•</span> Performed unit test with jest, jasmine and e2e test with cypress
-          <br>
-          <span class="yellow-point">•</span> Proficiency in Cloud and DevOps technologies
-          <br>
-          <span class="yellow-point">•</span> Time management within a number of projects
-          <br>
-          <span class="yellow-point">•</span> Experience working in a team
-        </p>
-        <br>
-        <p class="title"><span>Software Developer</span></p>
-        <p class="sub-title">FLL - Full Time  (2019 - 2020)</p>
-        <p class="sub-title">
-          <span class="yellow-point">•</span>  In charge of designing the UI/UX and implementing the Frontend features.
-          <br>
-          <span class="yellow-point">•</span> Developed RESTful Web services with Express.js and Node.js to simplify and streamline API calls.
-          <br>
-          <span class="yellow-point">•</span> Implemented unit testing on the project, resulting in a reduced number of bugs and improved overall project quality.
-          <br>
-          <span class="yellow-point">•</span> Conducted code reviews for other team members.
-          <br>
-          <span class="yellow-point">•</span> Experience in (CI/CD) to automate the software delivery process.
-          <br>
-          <span class="yellow-point">•</span> I used platforms like AWS (Amazon Web Services) and Microsoft Azure.
-        </p>
-      </div>  -->
-
-      <!-- END EXP -->
       <div class="low-sec_padding">
         <h2>Now</h2>
         <p class="sub-title">Developing skills through practice, exploring on this passion and interests. Aware that “everything around me is someone's life's work”.</p>
@@ -158,14 +367,13 @@
       </div>
     </main>
 
-    <!-- START CLOCK -->
     <div class="container timer fade-in">
       <div class="time">12:05:32</div>
       <div class="time-per">am</div>
       <div class="ubication_ar">Buenos Aires</div>
     </div>
-    <!-- END CLOCK -->
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/translate.js"></script>
   </body>
 </html>

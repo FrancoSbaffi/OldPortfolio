@@ -1,7 +1,4 @@
 
-
-
-
 //  function bgAnimationItems(){
 //     const rows = 7, cols = 10;
 //     for(let i = 0; i < rows; i++){
@@ -62,16 +59,16 @@ const tik = () => {
 
 tik();
 
- // Obtenemos el input y la lista de nombres
+
  const filtro = document.getElementById('filtro');
  const nombres = document.getElementById('nombres');
 
- // Escuchamos el evento 'input' para detectar cambios en el input
+
  filtro.addEventListener('input', () => {
    const textoFiltro = filtro.value.toLowerCase();
    const divsNombres = nombres.querySelectorAll('div');
 
-   // Iteramos por los divs de nombres y mostramos u ocultamos según el filtro
+   
    divsNombres.forEach(divNombre => {
      const textoDiv = divNombre.innerText.toLowerCase();
      if (textoDiv.includes(textoFiltro)) {
@@ -81,4 +78,3 @@ tik();
      }
    });
  });
-
