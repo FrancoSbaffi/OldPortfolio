@@ -14,7 +14,7 @@
 <br>
 <div align="center">
   
-<img src="![image](https://github.com/FrancoSbaffi/OldPortfolio/assets/99909205/21a31cad-286a-4813-845a-950eeafd89b8)" alt="Portfolio Image" style="border-radius: 10px;">
+<img src="https://github.com/FrancoSbaffi/OldPortfolio/assets/99909205/21a31cad-286a-4813-845a-950eeafd89b8" alt="Portfolio Image" style="border-radius: 10px;">
   
 </div>
 
