@@ -23,11 +23,8 @@
 - **HTML** - Standard markup language for documents designed to be displayed in a web browser.
 - **CSS** - Style language used to describe the presentation of a document written in HTML.
 - **JavaScript** - High-level, interpreted programming language.
-- **GSAP** - Library for creating advanced animations on the web.
 - **Fonts** - I use various fonts in my projects, including:
   - [**Plus Jakarta Sans**](https://fonts.google.com/specimen/Plus+Jakarta+Sans)
-  - [**Geist**](https://vercel.com/font)
-  - [**Georgia**](https://www.myfonts.com/collections/georgia-font-microsoft-corporation)
 
 ##  License
 
